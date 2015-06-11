@@ -22,16 +22,23 @@ define('timezone', type=str, default='Asia/Shanghai')
 define('port', type=int, default=8002)
 define('debug', type=bool, default=True)
 # DataBase
-define('master', type=str,default='mysql+mysqldb://root:@127.0.0.1/python_demo?charset=utf8')
-define('slaves', type=list, default=[])
+define('masters',type=list,default=[
+    'mysql+mysqldb://root:@127.0.0.1/python_demo?charset=utf8'
+])
+define('slaves', type=list,default=[
+    'mysql+mysqldb://root:@127.0.0.1/python_test?charset=utf8'
+])
 # Cache
-define('cache', type=str, default='memcache')
-define('memcache', type=str, default='127.0.0.1:11211')
-define('redis_host', type=str, default='')
+define('cache', type=str, default='redis')
+define('memcache_host', type=str, default='127.0.0.1')
+define('memcache_port', type=int, default=11211)
+define('redis_host', type=str, default='127.0.0.1')
 define('redis_port', type=int, default=6379)
 define('redis_db', type=int, default=0)
 define('redis_password', type=str, default='')
 define('redis_socket_timeout', type=int, default=None)
+# MongoDB
+
 # File
 # Theme
 define('theme_name', type=str, default='default')

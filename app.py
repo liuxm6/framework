@@ -14,8 +14,13 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self,handlers,**config.settings)
         #db
         db.init_db()
+        tornado.web.Application.masters = db.masters
+        tornado.web.Application.slaves = db.slaves
+        tornado.web.Application.sessions = db.sessions
         #cache
         cache.init_cache();
+        tornado.web.Application.cache_type = cache.cache_type
+        tornado.web.Application.cache = cache.cache
         #locale
         locale.init_locale();
 def main():

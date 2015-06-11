@@ -4,8 +4,10 @@ from model import *
 
 class IndexHandler(AppHandler):
     def get(self):
-        self.db.session.query(User)
-        self.render('index.html')
+        user = self.db.query(User).order_by(User.uid).first()
+        self.cache.set('name',user.name)
+        name = self.cache.get('name')
+        self.render('index.html',name=name)
 
 handlers = [
     url(r"/",IndexHandler,name="index"),
